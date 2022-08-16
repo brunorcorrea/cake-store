@@ -14,9 +14,9 @@ public class DemoApplication {
 		ApplicationContext ctx = SpringApplication.run(DemoApplication.class, args);
 		CakeService cakeService = ctx.getBean(CakeService.class);
 
-		Cake cake = new Cake(1L, "Chocolate cake");
-		Cake cake2 = new Cake(2L, "Strawberry cake");
-		Cake cake3 = new Cake(3L, "Simple cake");
+		Cake cake =Cake.from("Chocolate cake");
+		Cake cake2 =Cake.from("Strawberry cake");
+		Cake cake3 =Cake.from("Simple cake");
 		
 		cakeService.save(cake);
 		cakeService.save(cake2);

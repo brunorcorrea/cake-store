@@ -1,5 +1,7 @@
 package com.example.demo.services;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -16,13 +18,21 @@ public class CakeServiceImpl implements CakeService{
     }
 
     @Override
-    public Cake findById(Long id) {
-        Optional<Cake> cake = cakeRepository.findById(id);
+    public Cake findById(String id) {
+        Optional<Cake> cake = cakeRepository.findById(Long.valueOf(id));
 
         return cake.get();
     }
 
     public void save(Cake cake) {
+
         cakeRepository.save(cake);
+    }
+
+    public List<Cake> findAll() {
+        Iterable<Cake> cakesIterable = cakeRepository.findAll();
+        List<Cake> cakesList = new ArrayList<>();
+        cakesIterable.forEach(cakesList::add);
+        return cakesList;
     }
 }
