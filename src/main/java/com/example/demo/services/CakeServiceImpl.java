@@ -21,7 +21,9 @@ public class CakeServiceImpl implements CakeService{
     public Cake findById(String id) {
         Optional<Cake> cake = cakeRepository.findById(Long.valueOf(id));
 
-        return cake.get();
+        if(!cake.isEmpty()) return cake.get();
+
+        return new Cake();
     }
 
     public void save(Cake cake) {
